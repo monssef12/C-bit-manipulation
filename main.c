@@ -157,4 +157,3 @@ int main() {
     printf("the MSB is : %d", IsMSBSet(429496729));
     return 0;
 }
->>>>>>> c3429c0c1a40bd773a2e9708cbad0d1252374d2d
