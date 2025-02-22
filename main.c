@@ -72,8 +72,25 @@ int Clear_Nth_bit(int x, int n){
 int Toggle_Nth_bit(int x, int n){
     return x ^= (1<<n);
 }
+int IsPowerOfTwo(int x){
+    if (x == 0){return 0;}
+    return (x & (x-1)) == 0;
+}
 
+int NumOf1Bit(int x){
+    int count = 0;
+    while (x != 0)
+    {
+        if((x&1) == 1)
+        {
+            count=count + 1;
+        }
+        x = (x>>1);
+    }
+    return count;
+}
 int main() {
-    printf("the MSB is : %d", IsMSBSet(429496729));
+    printf("%d\n", 0b1111&1);
+    printf("the number of 1's  is: %d", NumOf1Bit(0b1111));
     return 0;
 }
