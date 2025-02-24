@@ -83,14 +83,29 @@ int NumOf1Bit(int x){
     {
         if((x&1) == 1)
         {
-            count=count + 1;
+            count = count + 1;
         }
         x = (x>>1);
     }
     return count;
 }
+
+int SwapEndians(int x){
+    // ex: 0b 0100 0110 1111 0000 0101 0111 1001 1000 ---> 0b 1001 1000 0101 0111 1111 0000 0100 0110
+    int result = 0;
+    int first_byte, second_byte, third_byte, forth_byte; // the first byte here is the leftmost byte 
+
+    first_byte = (x & 0xff000000) >> 24; // get the leftmost byte and shift it by 24 bits to put it in the right most
+    second_byte = (x & 0x00ff0000) >> 8; // get the second byte and shift it by 8 bits to be the third one in the output 
+    third_byte = (x & 0x0000ff00) << 8;  // get the third byte and shift it by 8 bits to the left to be the second byte in the output
+    forth_byte = (x & 0x000000ff) << 24; // ....
+
+    result = first_byte | second_byte | third_byte | forth_byte;
+    return result;
+
+}
+
 int main() {
-    printf("%d\n", 0b1111&1);
-    printf("the number of 1's  is: %d", NumOf1Bit(0b1111));
+    printf("the number of 1's  is: 0x%x", SwapEndians(0x78563412));
     return 0;
 }
