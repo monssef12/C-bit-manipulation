@@ -66,12 +66,16 @@ int Get_Leading_Zeros(int x){
     }
     return count;
 }
+
+
 int Clear_Nth_bit(int x, int n){
     return x &=~(1 << n);
 }
+
 int Toggle_Nth_bit(int x, int n){
     return x ^= (1<<n);
 }
+
 int IsPowerOfTwo(int x){
     if (x == 0){return 0;}
     return (x & (x-1)) == 0;
@@ -105,7 +109,29 @@ int SwapEndians(int x){
 
 }
 
+
+int ReverseBits(int x){ //ex: 0b01011 -> 0b11010
+    int result = 0;
+    int current ;
+
+    for (int i = sizeof(int)*8 - 1; i >= 0; i--)
+    {
+        current = (1 & x);
+        x = x >> 1;
+        result = result | (current << i);
+        /* code */
+    }
+    return result;
+}
+
+
+void PrintBinary(int num) {
+    for (int i = 31; i >= 0; i--) {
+        printf("%d", (num >> i) & 1);
+        if (i % 4 == 0) printf(" ");  // Add spaces for readability
+    }
+}
 int main() {
-    printf("the number of 1's  is: 0x%x", SwapEndians(0x78563412));
+    PrintBinary(ReverseBits(0b10010011001101000101011001111000));
     return 0;
 }
