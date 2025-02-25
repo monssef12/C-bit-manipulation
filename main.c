@@ -116,7 +116,7 @@ int ReverseBits(int x){ //ex: 0b01011 -> 0b11010
 
     for (int i = sizeof(int)*8 - 1; i >= 0; i--)
     {
-        current = (1 & x);
+        current = (1 & x); 
         x = x >> 1;
         result = result | (current << i);
         /* code */
@@ -132,6 +132,8 @@ void PrintBinary(int num) {
     }
 }
 int main() {
+
+    // manualy test functions 
     PrintBinary(ReverseBits(0b10010011001101000101011001111000));
     return 0;
 }
