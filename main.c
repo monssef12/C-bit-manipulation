@@ -124,7 +124,12 @@ int ReverseBits(int x){ //ex: 0b01011 -> 0b11010
     return result;
 }
 
+int SwapBits(int x, int i, int j){
+    x ^= (1 << i);
+    x ^= (1 << j);
+    return x;
 
+}
 void PrintBinary(int num) {
     for (int i = 31; i >= 0; i--) {
         printf("%d", (num >> i) & 1);
@@ -134,6 +139,6 @@ void PrintBinary(int num) {
 int main() {
 
     // manualy test functions 
-    PrintBinary(ReverseBits(0b10010011001101000101011001111000));
+    PrintBinary(SwapBits(0b10010011001101000101011001111001, 31, 30));
     return 0;
 }
