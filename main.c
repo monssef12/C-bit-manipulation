@@ -130,6 +130,23 @@ int SwapBits(int x, int i, int j){
     return x;
 
 }
+
+int SwapOddEven(int x){   // 0110101 --> 00111010 
+    int i = 0;
+    int j = 1;
+    while (i <= sizeof(int)*8-1)
+    {
+        if ((1 & (x>>i)) != (1 & (x>>j))){
+        
+        x ^= (1 << i);
+        x ^= (1 << j);
+        }
+        i+=2;
+        j+=2;
+    }
+    return x;
+}
+
 void PrintBinary(int num) {
     for (int i = 31; i >= 0; i--) {
         printf("%d", (num >> i) & 1);
@@ -139,6 +156,6 @@ void PrintBinary(int num) {
 int main() {
 
     // manualy test functions 
-    PrintBinary(SwapBits(0b10010011001101000101011001111001, 31, 30));
+    PrintBinary(SwapOddEven(0b10010011001101000101011001111001));
     return 0;
 }
