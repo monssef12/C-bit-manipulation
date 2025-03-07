@@ -147,6 +147,21 @@ int SwapOddEven(int x){   // 0110101 --> 00111010
     return x;
 }
 
+
+int TotalToFlipp(int x, int y){ // count total number of bits needed to be flipped to convert a given integer to another.
+    // ex: x = 65 (which is 01000001 in binary)
+    // y = 80 (which is 01010000 in binary)
+    // the output will be 2
+    
+    int count = 0;
+    for (int i = 0; i < sizeof(int)*8; i++)
+    {
+        count += (1&(x>>i))^(1&(y>>i));
+    }
+    return count;
+    
+
+}
 void PrintBinary(int num) {
     for (int i = 31; i >= 0; i--) {
         printf("%d", (num >> i) & 1);
@@ -156,6 +171,6 @@ void PrintBinary(int num) {
 int main() {
 
     // manualy test functions 
-    PrintBinary(SwapOddEven(0b10010011001101000101011001111001));
+    printf("the total number of bits to flipp is: %d", TotalToFlipp(3, 1));
     return 0;
 }
