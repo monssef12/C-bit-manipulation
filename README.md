@@ -1,2 +1,2 @@
 # C-bit-manipulation
-this repository containes implementation of bit manipulation functions in C usually asked in embedded software position interviews 
+this repository containes implementation of bit manipulation functions in C usually asked in embedded software position interviews, like bitwise operation related question, in this repo we will go through those problems and we will try to solve them with a given explication for each problem and the proposed solution 
